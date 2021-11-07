@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script>
+    /* URL in address bar: 
+ http://localhost/test/js-url-parameters/#/str1/str2/str3/
+*/
+
+    var docURL = window.location.href,
+      params = [];
+
+    // filter out the website origin "example.github.io" in the OP example
+    docURL = docURL.replace(window.location.origin, "");
+
+    // if /#/ found then we have URL parameters
+    // grabbing the parameters part of the URL
+    if (docURL.indexOf("/#/") > -1) {
+      docURL = docURL.split("/#/")[1];
+      if (docURL != "") {
+        // omit the last forward slash if exist
+        if (docURL[docURL.length - 1] == "/") {
+          docURL = docURL.substring(0, docURL.length - 1);
+        }
+
+        // split the URL final string o get an object with all params
+        params = docURL.split("/");
+        tokenData = { "hash": params[0] };
+      }
+    } else {
+      console.log("No URL parameters found");
+    }
+  </script>
+  <script language="javascript" type="text/javascript" src="libraries/CCapture.all.min.js"></script>
+  <script language="javascript" type="text/javascript" src="evolutionsNFT.min.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body></body>
+
+</html>

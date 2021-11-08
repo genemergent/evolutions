@@ -34,8 +34,9 @@
             params[i] = isNaN(parseInt(params[i])) ? params[i] : parseInt(params[i]);
           }
         }
+        // API is generator/#/hash/saveImage/dumpVideo/windowSize/canvasSize
         tokenData = { "hash": params[0]};
-        settings = {"saveImage": params[1], "dumpVideo": params[2], "windowSize": params[3]};
+        settings = {"saveImage": params[1], "dumpVideo": params[2], "windowSize": params[3], "canvasSize": params[4]};
       }
     } else {
       console.log("No URL parameters found");

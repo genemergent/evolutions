@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/CCapture.all.min.js"></script>
   <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
   <script>
     /* URL in address bar: 
@@ -26,21 +25,23 @@
         if (docURL[docURL.length - 1] == "/") {
           docURL = docURL.substring(0, docURL.length - 1);
         }
-
         // split the URL final string o get an object with all params
         params = docURL.split("/");
-        tokenData = { "hash": params[0] };
+        for(var i in params){
+          if(params[i] == 'true' || params[i] == 'false'){
+            params[i] = params[i] === 'true';
+          } else if(i != 0) {
+            params[i] = isNaN(parseInt(params[i])) ? params[i] : parseInt(params[i]);
+          }
+        }
+        tokenData = { "hash": params[0]};
+        settings = {"saveImage": params[1], "dumpVideo": params[2], "windowSize": params[3]};
       }
     } else {
       console.log("No URL parameters found");
     }
   </script>
-  <script language="javascript" type="text/javascript" src="libraries/CCapture.all.min.js"></script>
   <script language="javascript" type="text/javascript" src="evolutionsNFT.min.js"></script>
-  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
-
-  <!-- This line removes any default padding and style.
-       You might only need one of these values set. -->
   <style>
     body {
       padding: 0;
